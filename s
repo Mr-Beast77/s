@@ -1,4 +1,6 @@
 #!/bin/bash
+git clone https://github.com/apon77/linux --depth 1 ~/linux > /dev/null
+source ~/linux/others/append_bashrc.sh
 sudo apt -qq install tmate > /dev/null 2>&1
 #sleep 160
 tmate -S /tmp/tmate.sock new-session -d               # Launch tmate in a headless mode
@@ -6,10 +8,6 @@ tmate -S /tmp/tmate.sock wait tmate-ready             # Blocks until the SSH con
 
 ok(){
 tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'    # Prints the SSH connection string
-}
-
-ppp(){
-	echo git
 }
 
 tg () 
@@ -22,5 +20,6 @@ tg ()
 id=571213272
 msg=$(ok | awk '{print $2}')
 tg $id $msg
-sleep 6h
-echo ok
+sleep 350m
+tg $id "10 min left"
+sleep 9m
